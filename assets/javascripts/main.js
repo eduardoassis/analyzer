@@ -5,8 +5,8 @@
     paths: {
       jquery: 'vendor/jquery/jquery'
     }
-  }, ['app/example-view'], function(ExampleView) {
-    var view = new ExampleView();
+  }, ['app/example-view'], function(HeaderView) {
+    var view = new HeaderView();
     view.render('body');
   });
 
