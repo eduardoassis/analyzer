@@ -46,10 +46,9 @@ exports.startServer = function(config, callback) {
   callback(server);
 };
 
-/*
 TopCube({
   url: 'http://localhost:3000/home',
   name: 'Analyzer',
   width: 1024,
   height: 700
-});*/
+});
