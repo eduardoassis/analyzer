@@ -1,0 +1,48 @@
+doctype 5
+html(ng-app="app")
+  head
+    title Analyzer
+    link(rel='stylesheet', href='/stylesheets/style.css' + cachebust)
+    link(rel='stylesheet', href='/stylesheets/bootstrap/bootstrap.min.css')        
+    link(rel='stylesheet', href='/stylesheets/menu.css')  
+
+    if reload
+      script(src='/socket.io/socket.io.js')
+      script(src='/javascripts/reload-client.js')
+
+    if optimize
+      script(src='/javascripts/main-built.js')
+    else
+      script(src='/javascripts/vendor/requirejs/require.js', data-main='/javascripts/main.js')
+ 
+    script(src='/javascripts/vendor/jquery/jquery.js', data-main='/javascripts/main.js')    
+    script(src='/javascripts/vendor/bootstrap/bootstrap.min.js', data-main='/javascripts/main.js')
+    script(src='/javascripts/vendor/chart/highcharts.js', data-main='/javascripts/main.js')
+    script(src='/javascripts/vendor/chart/exporting.js', data-main='/javascripts/main.js')      
+    script(src='/javascripts/app/utils/ChartManager.js', data-main='/javascripts/main.js')
+    script(src='/javascripts/app/utils/menu.js', data-main='/javascripts/main.js')
+  
+      
+body
+
+    div(id="site-wrapper")
+        a(href="#" class="toggle-nav btn menu-button" id="open-menu")
+            i(class="fa fa-bars") Menu
+
+        div(id="site-canvas")
+        
+
+            div(id="site-menu")
+                nav(class="nav-menu")
+                    ul
+                        li
+                            a(href="/home") Início
+                        li 
+                            a(href="/goodputAggregatedPerFlow/report") Relatório de vazão agregada por fluxo em cada execução
+                        li 
+                            a(href="/goodputAggregatedPerExperiment/report") Relatório de vazão agregada por experimento
+                        li 
+                            a(href="/lossRateAggregated/report") Taxa de perda
+                
+            block content
+

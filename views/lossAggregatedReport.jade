@@ -1,0 +1,14 @@
+extends layout
+
+block content
+
+	javascript
+				
+		script(src='/javascripts/app/controller/LossRateController.js')
+		script
+			$(document).ready(function() {
+				var lossRateController = new LossRateController();
+				lossRateController.getAnalysisLossRateAggregated();
+			});
+
+		div(id="container" style="min-width: 310px; height: 400px; margin: 0 auto")

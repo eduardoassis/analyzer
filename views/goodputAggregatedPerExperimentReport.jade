@@ -1,0 +1,17 @@
+extends layout
+
+block content
+
+	javascript
+		
+		script(src='/javascripts/app/controller/GoodputAggregatedControoller.js')
+
+		script
+
+			$(document).ready(function() {
+
+				var goodPutController = new GoodputAggregatedControoller();
+				goodPutController.getAnalysisGoodPut();
+			});
+
+		div(id="container" style="min-width: 310px; height: 400px; margin: 0 auto")

@@ -1,0 +1,28 @@
+#!/bin/bash
+
+cd repos/ns-3-allinone/ns-3-dev/
+
+LIMITE=5
+
+for ((i=1; i <= $LIMITE ; i++))
+do
+	
+	## TcpTahoe
+
+	./waf --run "examples/tcp/tcp-variants-comparison --transport_prot=TcpTahoe --tr_name=TcpTahoe_$i.tr --run=$((RANDOM%100+1)) --error_p=0.01 --flow_monitor_file=TcpTahoe_flow_monitor_$i"
+	mv TcpTahoe_"$i".tr ~/Área\ de\ Trabalho/results/TcpTahoe/
+	mv TcpTahoe_flow_monitor_"$i" ~/Área\ de\ Trabalho/flow_results/TcpTahoe/
+
+	## TcpNewReno
+
+	./waf --run "examples/tcp/tcp-variants-comparison --transport_prot=TcpNewReno --tr_name=TcpNewReno_$i.tr --run=$((RANDOM%100+1)) --error_p=0.01 --flow_monitor_file=TcpNewReno_flow_monitor_$i"
+	mv TcpNewReno_"$i".tr ~/Área\ de\ Trabalho/results/TcpNewReno/
+	mv TcpNewReno_flow_monitor_"$i" ~/Área\ de\ Trabalho/flow_results/TcpNewReno/
+
+	## TcpWestwood
+
+	./waf --run "examples/tcp/tcp-variants-comparison --transport_prot=TcpWestwood --tr_name=TcpWestwood_$i.tr --run=$((RANDOM%100+1)) --error_p=0.01 --flow_monitor_file=TcpWestwood_flow_monitor_$i"
+	mv TcpWestwood_"$i".tr ~/Área\ de\ Trabalho/results/TcpWestwood/
+	mv TcpWestwood_flow_monitor_"$i" ~/Área\ de\ Trabalho/flow_results/TcpWestwood/
+
+done
